@@ -1,0 +1,3 @@
+"Alex", 33 , "Man"
+"Victor", 20 , "Man"
+"Bob", 24 , "Man"
