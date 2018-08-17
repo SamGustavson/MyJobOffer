@@ -12,7 +12,7 @@ public class Man {
         return age;
     }
 
-    public String getSex(String sex) {
+    public String getSex() {
         return sex;
     }
 

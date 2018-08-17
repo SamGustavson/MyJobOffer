@@ -1,12 +1,10 @@
-import com.sun.javafx.geom.Edge;
-
 import java.util.*;
 
 public class SerchWorker {
 
     Scanner scanner = new Scanner(System.in);
     private List<Worker> workerList;
-    private SerchWorker(List<Worker> worker) {
+    SerchWorker(List<Worker> worker) {
         workerList = worker;
     }
 
@@ -24,36 +22,59 @@ public class SerchWorker {
 //        }
 //    }
 
-    private Collection<String> search(String vaule){
-        List<String> founds = new ArrayList<String>();
+    private boolean search(String nameCategory, String vaule){
+
 
         for (Worker s : workerList){
-            if (s.equals(vaule)){
+            String []succsess = {"Name","Age","Sex","Experience","JobName"};
+           
+            switch (nameCategory.toLowerCase()){
+                case "experience" : s.toString().contains(vaule);
+                    return s.toString().contains(vaule);
+//                    break;
 
-                System.out.println("We found :"+ s);
+                case "jobName" :
+                    System.out.println("Job Name is" + s.getJobName().contains(vaule));
+                    return s.getJobName().contains(vaule);
+//                    break;
+                case "name" :
+                    System.out.println(s.getName().toLowerCase().contains(vaule));
+                    return s.getName().contains(vaule);
+//                    break;
+                case "age" :
+                    System.out.println(s.toString().contains(vaule));
+                    return s.toString().contains(vaule);
+//                    break;
+                case "sex" :
+                    System.out.println(s.getSex().contains(vaule));
+                    return s.getSex().contains(vaule);
+//                    break;
+                default:
+                    System.out.println("--Unknown command!");
             }
         }
-        return founds;
-    }
 
+
+        return false;
+    }
     public void Search() {
-        System.out.println("-- Enter searchByText to find contacts card (Example: experience or jobName)");
+        System.out.println("-- Chose category (Example: 1 - experience or 2 -jobName)");
         String inputCategory = scanner.nextLine();
+        System.out.println("-- Enter value of category (Example: epam)");
+
         String inputVaulle = scanner.nextLine();
 
+        search(inputCategory,inputVaulle);
+
 //        Worker james = workerList.stream().filter(workerList ->inputCategory.equals(workerList.getJobName())).findAny().orElse();
+
 
         List<String> list = Arrays.asList(workerList.toArray().toString());
 
         boolean match = list.stream().allMatch(s -> inputCategory.contains(s));
         System.out.println(match);
 
-//
-//        for (Worker searchResult : workerList ){
-//            for (List<String> worker :searchResult.getJobName() ){
-//                if ()
-//            }
-//        }
+
 
     }
 }
